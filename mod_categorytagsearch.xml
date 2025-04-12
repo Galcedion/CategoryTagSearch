@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>CategoryTagSearch</name>
+	<author>Galcedion</author>
+	<creationDate>2025</creationDate>
+	<version>1.0.0</version>
+	<license>GPL-3.0</license>
+	<description>Client-side module which creates a list of articles with respective tags. Allows frontend-users to click tags and filter the list to those selected. (Search with logic AND, meaning all selected tags need to apply)
+	The list is single paged and search is done with JavaScript, making it dynamic withoud needing to reload the page.
+	The base list are all articles of a certain category with tags.</description>
+	<files>
+        <filename module="mod_categorytagsearch">mod_categorytagsearch.php</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+    </files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="g_module_head"
+					type="checkbox"
+					label="Use module header and description?"
+					checked="0"
+					description="If checked, the header and description set below are used."/>
+				<field
+					name="g_pageheader"
+					type="text"
+					label="Header"
+					default="Search by Tag"
+					required="True"
+					description="Headline to be displayed in the frontend."/>
+				<field
+					name="g_pageinfo"
+					type="text"
+					label="Enter your description here."
+					description="Description displayed in the frontend. Does not appear if left empty."/>
+				<field
+					name="g_striptag"
+					type="text"
+					label="Stip Tag text"
+					description="Text to remove from displayed tags. The language Setting of the current language (i.e. '-en-GB') is already removed."/>
+				<field
+					name="g_category"
+					type="sql"
+					label="Select Category for Articles"
+					query="SELECT id, title FROM #__categories WHERE level > 0"
+					key_field="id"
+					value_field="title"
+					required="True"
+					description="Which category of content is used for tags and displaying articles."/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
