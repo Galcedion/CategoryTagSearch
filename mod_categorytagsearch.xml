@@ -17,11 +17,96 @@
 		<fields name="params">
 			<fieldset name="basic">
 				<field
+					name="g_class"
+					type="text"
+					label="MOD_CTS_G_CLASS_LABEL"
+					default="g-mod-cts"
+					required="1"
+					description="MOD_CTS_G_CLASS_DESC"/>
+				<field
+					name="s_main_search"
+					type="spacer"
+					label=""
+					hr="true"/>
+				<field
+					name="s_main_search_text"
+					type="spacer"
+					class="fw-bold"
+					label="Search settings"/>
+				<field
+					name="g_category"
+					type="sql"
+					label="Select Category for Articles"
+					query="SELECT id, title FROM #__categories WHERE level > 0"
+					key_field="id"
+					value_field="title"
+					required="True"
+					description="Which category of content is used for tags and displaying articles."/>
+				<field
+					name="g_striptag"
+					type="text"
+					label="Stip Tag text"
+					description="Text to remove from displayed tags. The language Setting of the current language (i.e. '-en-GB') is automatically removed."/>
+				<field
+					name="g_search_mode"
+					type="radio"
+					default="0"
+					label="Search mode"
+					description="How the search should be displayed: dynamic or static dynamic - all possible results will be loaded and any search refinement will be done with JavaScript without reloading the page static - only a part of the results will be loaded each time, any changes will result in a page reload (suggested if users want to share the search)"
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">dynamic</option>
+					<option value="1">static</option>
+				</field>
+				<field
+					name="g_show_columns"
+					type="number"
+					default="4"
+					label="Number of columns for results"
+					description=""
+					min="1"
+					max="12"
+					step="1"/>
+				<field
+					name="g_show_rows"
+					type="number"
+					default="10"
+					label="Number of rows for results"
+					description=""
+					min="5"
+					max="50"
+					step="5"/>
+				<field
+					name="g_paging"
+					type="list"
+					default="0"
+					label="Results per page"
+					description="Sets the number of maximum results per page.">
+					<option value="0">0 - all results</option>
+					<option value="10">10</option>
+					<option value="20">20</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+				</field>
+				<field
+					name="s_search_style"
+					type="spacer"
+					label=""
+					hr="true"/>
+				<field
+					name="s_search_style_text"
+					type="spacer"
+					class="fw-bold"
+					label="Display and Style settings"/>
+				<field
 					name="g_module_head"
-					type="checkbox"
+					type="radio"
+					default="0"
 					label="Use module header and description?"
-					checked="0"
-					description="If checked, the header and description set below are used."/>
+					description="If checked, the header and description set below are used."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
 				<field
 					name="g_pageheader"
 					type="text"
@@ -35,19 +120,11 @@
 					label="Enter your description here."
 					description="Description displayed in the frontend. Does not appear if left empty."/>
 				<field
-					name="g_striptag"
-					type="text"
-					label="Stip Tag text"
-					description="Text to remove from displayed tags. The language Setting of the current language (i.e. '-en-GB') is already removed."/>
-				<field
-					name="g_category"
-					type="sql"
-					label="Select Category for Articles"
-					query="SELECT id, title FROM #__categories WHERE level > 0"
-					key_field="id"
-					value_field="title"
-					required="True"
-					description="Which category of content is used for tags and displaying articles."/>
+					name="custom_css"
+					type="textarea"
+					label="MOD_CTS_CUSTOM_CSS_LABEL"
+					rows="10"
+					description="MOD_CTS_CUSTOM_CSS_DESC"/>
 			</fieldset>
 		</fields>
 	</config>
