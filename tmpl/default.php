@@ -78,6 +78,8 @@ function gCTSSwitchtag(origin) {
 			}
 			++onpageCount;
 		}
+		if(gSelectedTags.length == 0)
+			++onpageCount;
 		if(hasTag && onpageCount <= gRPP)
 			document.getElementById(id).classList.remove('hidden');
 		else
@@ -102,6 +104,8 @@ function gCTSFlipPaging(step) {
 			}
 			++onpageCount;
 		}
+		if(gSelectedTags.length == 0)
+			++onpageCount;
 		if(hasTag && Math.ceil(onpageCount / gRPP) == curPage)
 			document.getElementById(id).classList.remove('hidden');
 		else
