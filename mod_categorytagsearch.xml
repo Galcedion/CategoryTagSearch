@@ -34,7 +34,7 @@
 					class="fw-bold"
 					label="Search settings"/>
 				<field
-					name="g_category"
+					name="category"
 					type="sql"
 					label="Select Category for Articles"
 					query="SELECT id, title FROM #__categories WHERE level > 0"
@@ -43,12 +43,12 @@
 					required="True"
 					description="Which category of content is used for tags and displaying articles."/>
 				<field
-					name="g_striptag"
+					name="striptag"
 					type="text"
 					label="Stip Tag text"
 					description="Text to remove from displayed tags. The language Setting of the current language (i.e. '-en-GB') is automatically removed."/>
 				<field
-					name="g_search_mode"
+					name="search_mode"
 					type="radio"
 					default="0"
 					label="Search mode"
@@ -58,7 +58,7 @@
 					<option value="1">static</option>
 				</field>
 				<field
-					name="g_show_columns"
+					name="show_columns"
 					type="number"
 					default="4"
 					label="Number of columns for results"
@@ -67,7 +67,7 @@
 					max="12"
 					step="1"/>
 				<field
-					name="g_show_rows"
+					name="show_rows"
 					type="number"
 					default="10"
 					label="Number of rows for results"
@@ -76,7 +76,7 @@
 					max="50"
 					step="5"/>
 				<field
-					name="g_paging"
+					name="paging"
 					type="list"
 					default="0"
 					label="Results per page"
@@ -98,7 +98,7 @@
 					class="fw-bold"
 					label="Display and Style settings"/>
 				<field
-					name="g_module_head"
+					name="module_head"
 					type="radio"
 					default="0"
 					label="Use module header and description?"
@@ -108,14 +108,14 @@
 					<option value="1">JYes</option>
 				</field>
 				<field
-					name="g_pageheader"
+					name="pageheader"
 					type="text"
 					label="Header"
 					default="Search by Tag"
 					required="True"
 					description="Headline to be displayed in the frontend."/>
 				<field
-					name="g_pageinfo"
+					name="pageinfo"
 					type="text"
 					label="Enter your description here."
 					description="Description displayed in the frontend. Does not appear if left empty."/>
