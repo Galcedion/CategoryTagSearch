@@ -17,6 +17,7 @@ foreach($param_list_int as $pli) {
 foreach($param_list_str as $pls) {
 	$g_cts_config[$pls] = $params->get($pls) === NULL ? '' : trim($params->get($pls));
 }
+$g_cts_config['rpp'] = intval($g_cts_config['show_columns']) * intval($g_cts_config['show_rows']);
 if($g_cts_config['search_mode']) {
 	$g_cts_config['GET'] = [];
 	$g_cts_config['GET']['tags'] = isset($_GET['tags']) ? filter_var($_GET['tags'], FILTER_SANITIZE_URL) : NULL;
