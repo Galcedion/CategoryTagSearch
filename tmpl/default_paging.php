@@ -1,4 +1,4 @@
-<div class="text-center">
+<div id="g-cts-paging" class="text-center">
 	<input type="button" value="<" onclick="gCTSFlipPaging(-1)">
 	<strong id="g-cts-paging-cur">1</strong>
 	<strong>/</strong>
