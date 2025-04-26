@@ -2,15 +2,19 @@
 defined('_JEXEC') or die;
 require_once dirname(__FILE__) . '/helper.php';
 
+$param_list_bool = [
+	'search_mode', 'module_head', 'result_icon', 'result_title'
+];
 $param_list_int = [
-	'category', 'show_columns', 'show_rows', 'paging'
+	'category', 'show_columns', 'show_rows', 'paging', 'result_direction'
 ];
 $param_list_str = [
 	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css'
 ];
 $g_cts_config = [];
-$g_cts_config['search_mode'] = $params->get('search_mode') == 1 ? TRUE : FALSE;
-$g_cts_config['module_head'] = $params->get('module_head') == 1 ? TRUE : FALSE;
+foreach($param_list_bool as $plb) {
+	$g_cts_config[$plb] = $params->get($plb) == 1 ? TRUE : FALSE;
+}
 foreach($param_list_int as $pli) {
 	$g_cts_config[$pli] = intval($params->get($pli));
 }

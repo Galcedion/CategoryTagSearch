@@ -50,7 +50,7 @@ class ModCategoryTagSearch
 				$m['id'] = substr($m['link'], $start, strpos($m['link'], '&', $start) - $start);
 		}
 		unset($m);
-		$query = $db->getQuery(true)->select('c.id, c.title, c.alias, cat.alias')->from($db->quoteName('#__content', 'c'));
+		$query = $db->getQuery(true)->select('c.id, c.title, c.images')->from($db->quoteName('#__content', 'c'));
 		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('c.id') . '=' .  $db->quoteName('ctm.content_item_id'));
 		$query->join('LEFT', $db->quoteName('#__categories', 'cat') . ' ON ' . $db->quoteName('c.catid') . '=' .  $db->quoteName('cat.id'));
 		$query->where('c.catid = ' . $db->quote($g_cts_config['category']));
@@ -61,7 +61,8 @@ class ModCategoryTagSearch
 		$query->order('c.title ASC');
 		$db->setQuery($query);
 		$articles = $db->loadAssocList();
-		foreach($articles as &$a) {$a['id'];
+		foreach($articles as &$a) {
+			$a['images'] = json_decode($a['images'], true)['image_intro'];
 			foreach($menu as $m) {
 				if($a['id'] == $m['id']) {
 					$a['path'] = $m['path'];
