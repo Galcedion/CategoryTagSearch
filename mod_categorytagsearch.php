@@ -3,7 +3,8 @@ defined('_JEXEC') or die;
 require_once dirname(__FILE__) . '/helper.php';
 
 $param_list_bool = [
-	'search_mode', 'module_head', 'result_icon', 'result_title'
+	'search_mode', 'module_head', 'result_icon', 'result_title',
+	'use_article_lang', 'use_tag_lang'
 ];
 $param_list_int = [
 	'category', 'show_columns', 'show_rows', 'paging', 'result_direction'

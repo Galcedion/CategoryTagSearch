@@ -88,6 +88,26 @@
 					<option value="100">100</option>
 				</field>
 				<field
+					name="use_article_lang"
+					type="radio"
+					default="0"
+					label="Limit articles to current language?"
+					description="If selected, only articles matching the user's language will be displayed."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
+					name="use_tag_lang"
+					type="radio"
+					default="0"
+					label="Limit tags to current language?"
+					description="If selected, only tags matching the user's language will be available."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
 					name="s_search_style"
 					type="spacer"
 					label=""

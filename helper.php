@@ -12,7 +12,8 @@ class ModCategoryTagSearch
 		$query->where('c.catid = ' . $db->quote($g_cts_config['category']));
 		$query->where('t.published = 1');
 		$query->where('c.state = 1');
-		#$query->where('t.language = ' . $db->quote($g_cts_config['current_lang'])); // TODO lang should be optional!
+		if($g_cts_config['use_tag_lang'])
+			$query->where('t.language = ' . $db->quote($g_cts_config['current_lang']));
 		$query->group('t.id');
 		$query->order('t.title ASC');
 		$db->setQuery($query);
@@ -22,7 +23,8 @@ class ModCategoryTagSearch
 
 	private static function strip_tag_list($g_cts_config, $tag_list) {
 		foreach($tag_list as &$t) {
-			#$t['title'] = str_replace('-' . $g_cts_config['current_lang'], '', $t['title']); // TODO lang should be optional!
+			if($g_cts_config['use_tag_lang'])
+				$t['title'] = str_replace('-' . $g_cts_config['current_lang'], '', $t['title']);
 			if($g_cts_config['striptag'] != "")
 				$t['title'] = str_replace($g_cts_config['striptag'], $t['title']);
 			$t['description'] = str_replace('<p>', '', str_replace('</p>', '', $t['description']));
@@ -37,7 +39,8 @@ class ModCategoryTagSearch
 		$query = $db->getQuery(true)->select('m.title, m.path, m.link')->from($db->quoteName('#__menu', 'm'));
 		$query->where('m.published = 1');
 		$query->where('m.link LIKE "%view=article%"');
-		#$query->where('m.language = ' . $db->quote($g_cts_config['current_lang'])); // TODO lang should be optional
+		if($g_cts_config['use_article_lang'])
+			$query->where('m.language = ' . $db->quote($g_cts_config['current_lang']));
 		$query->order('m.id ASC');
 		$db->setQuery($query);
 		$menu = $db->loadAssocList();
@@ -55,7 +58,8 @@ class ModCategoryTagSearch
 		$query->join('LEFT', $db->quoteName('#__categories', 'cat') . ' ON ' . $db->quoteName('c.catid') . '=' .  $db->quoteName('cat.id'));
 		$query->where('c.catid = ' . $db->quote($g_cts_config['category']));
 		$query->where('c.state = 1');
-		#$query->where('c.language = ' . $db->quote($g_cts_config['current_lang'])); // TODO lang should be optional!
+		if($g_cts_config['use_article_lang'])
+			$query->where('c.language = ' . $db->quote($g_cts_config['current_lang']));
 		$query->where('ctm.tag_id IN (' . implode(',', $tagids) . ')');
 		$query->group('c.id');
 		$query->order('c.title ASC');
