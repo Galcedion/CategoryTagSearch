@@ -1,3 +1,6 @@
+<?php
+defined('_JEXEC') or die;
+?>
 <script>
 var gSelectedTags = [];
 var gRPP = <?=$g_cts_config['rpp'];?>;
