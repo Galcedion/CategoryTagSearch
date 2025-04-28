@@ -140,10 +140,10 @@
 					label="Enter your description here."
 					description="Description displayed in the frontend. Does not appear if left empty."/>
 				<field
-					name="result_icon"
+					name="result_thumb"
 					type="radio"
 					default="0"
-					label="Show the article icon?"
+					label="Show the article thumbnail?"
 					description="If available, the Into Image of each article will be used."
 					layout="joomla.form.field.radio.switcher">
 					<option value="0">JNo</option>
@@ -167,6 +167,16 @@
 					description="Sets how the information of each article will be displayed.">
 					<option value="0">Below each other</option>
 					<option value="1">Next to each other</option>
+				</field>
+				<field
+					name="enable_fontawesome"
+					type="radio"
+					default="1"
+					label="Use Fontawesome?"
+					description="If enabled, Fontawesome Icons will be used for pagination and as search symbol."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
 				</field>
 				<field
 					name="custom_css"

@@ -1,5 +1,6 @@
 <?php
 defined('_JEXEC') or die;
+$filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-magnifying-glass"></i>' : '';
 ?>
 <?php if($g_cts_config['module_head']): ?>
 	<h3><?=$g_cts_config['pageheader'];?></h3>
@@ -7,7 +8,7 @@ defined('_JEXEC') or die;
 		<p><?=$g_cts_config['pageinfo'];?></p>
 	<?php endif; ?>
 <?php endif; ?>
-<div class="g-tagsearch-headline mb-1">Filter:
+<div class="g-tagsearch-headline mb-1"><?=$filter_display;?>
 <?php foreach($tag_list as $t): ?>
 	<strong id="g-cts-tag-<?=$t['id'];?>" class="btn btn-sm btn-info" title="<?=$t['description'];?>" onclick="gCTSSwitchtag(this.id)"><?=$t['title'];?></strong>
 <?php endforeach; ?>

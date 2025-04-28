@@ -10,7 +10,7 @@ else
 		<?php if($g_cts_config['result_direction'] == 1): ?>
 			<div class="row">
 		<?php endif; ?>
-		<?php if($g_cts_config['result_icon']): ?>
+		<?php if($g_cts_config['result_thumb']): ?>
 			<div class="<?=$g_cts_config['result_direction'] == 0 ? 'row text-center' : 'col';?>">
 				<a href="<?=$a['path'];?>">
 					<img src="<?=$a['images'];?>"/>
