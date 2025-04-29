@@ -1,5 +1,14 @@
 <?php
+/**
+ * @package    Joomla.Site
+ * @subpackage mod_categorytagsearch
+ *
+ * @author     Galcedion https://galcedion.com
+ * @copyright  Copyright (c) 2025 Galcedion
+ * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
+ */
 defined('_JEXEC') or die;
+/* set HTML params from config and initial */
 $filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-magnifying-glass"></i>' : '';
 ?>
 <?php if($g_cts_config['module_head']): ?>

@@ -1,5 +1,14 @@
 <?php
+/**
+ * @package    Joomla.Site
+ * @subpackage mod_categorytagsearch
+ *
+ * @author     Galcedion https://galcedion.com
+ * @copyright  Copyright (c) 2025 Galcedion
+ * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
+ */
 defined('_JEXEC') or die;
+/* set HTML params from config and initial */
 if($g_cts_config['result_direction'] == 0)
 	$tag_classes = 'bg-info text-white rounded px-1 small w-auto mx-1';
 else
