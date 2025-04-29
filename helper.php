@@ -7,7 +7,8 @@
  * @copyright  Copyright (c) 2025 Galcedion
  * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
  */
-use Joomla\CMS\Uri\Uri;
+defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Router\Route;
 
 /**
@@ -23,7 +24,7 @@ class ModCategoryTagSearch
 	 * @return array of finished tags (assoc arrays)
 	 */
 	public static function get_tag_list($g_cts_config) {
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true)->select('t.id, t.title, t.description')->from($db->quoteName('#__tags', 't'));
 		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('t.id') . '=' .  $db->quoteName('ctm.tag_id'));
 		$query->join('LEFT', $db->quoteName('#__content', 'c') . ' ON ' . $db->quoteName('ctm.content_item_id') . '=' .  $db->quoteName('c.id'));
@@ -70,7 +71,7 @@ class ModCategoryTagSearch
 	public static function get_article_list($g_cts_config, $tags) {
 		$tagids = ModCategoryTagSearch::get_tag_ids($tags);
 		/* get related menu structure */
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true)->select('m.title, m.path, m.link')->from($db->quoteName('#__menu', 'm'));
 		$query->where('m.published = 1');
 		$query->where('m.link LIKE "%view=article%"');

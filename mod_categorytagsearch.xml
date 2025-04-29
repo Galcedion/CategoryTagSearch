@@ -2,6 +2,7 @@
 <extension type="module" version="3.1" client="site" method="upgrade">
 	<name>CategoryTagSearch</name>
 	<author>Galcedion</author>
+	<authorUrl>https://galcedion.com</authorUrl>
 	<creationDate>2025</creationDate>
 	<version>1.0.0</version>
 	<license>GPL-3.0</license>

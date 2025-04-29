@@ -8,6 +8,8 @@
  * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
  */
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ModuleHelper;
 require_once dirname(__FILE__) . '/helper.php';
 
 /* types of config parameters (only these will be used) */
@@ -38,7 +40,7 @@ if($g_cts_config['search_mode']) { // get data from HTTP GET
 	$g_cts_config['GET']['tags'] = isset($_GET['tags']) ? filter_var($_GET['tags'], FILTER_SANITIZE_URL) : NULL;
 	$g_cts_config['GET']['p'] = isset($_GET['p']) ? filter_var($_GET['p'], FILTER_SANITIZE_NUMBER_INT) : NULL;
 }
-$g_cts_config['current_lang'] = JFactory::getLanguage()->getTag(); // the language the user is currently using
+$g_cts_config['current_lang'] = Factory::getLanguage()->getTag(); // the language the user is currently using
 /* config ready */
 
 $tag_list = ModCategoryTagSearch::get_tag_list($g_cts_config);
@@ -46,6 +48,6 @@ if(count($tag_list) == 0)
 	return;
 $article_list = ModCategoryTagSearch::get_article_list($g_cts_config, $tag_list);
 
-require JModuleHelper::getLayoutPath('mod_categorytagsearch'); // this loads the tmpl/default.php
+require ModuleHelper::getLayoutPath('mod_categorytagsearch'); // this loads the tmpl/default.php
 
 ?>
