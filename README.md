@@ -5,4 +5,5 @@ After installing the module, open it via the "(Home) Dashboard" and the "Module"
 ## Settings
 will be added once all settings are there and finalized
 ## Localization
-will be added soon
+- en-GB
+- de-DE
