@@ -69,7 +69,7 @@ class ModCategoryTagSearch
 	 * @return array of articles (assoc arrays)
 	 */
 	public static function get_article_list($g_cts_config, $tags) {
-		$tagids = ModCategoryTagSearch::get_tag_ids($tags);
+		$tagids = ModCategoryTagSearch::get_db_item_ids($tags);
 		/* get related menu structure */
 		$db = Factory::getDbo();
 		$query = $db->getQuery(true)->select('m.title, m.path, m.link')->from($db->quoteName('#__menu', 'm'));
@@ -80,7 +80,7 @@ class ModCategoryTagSearch
 		$query->order('m.id ASC');
 		$db->setQuery($query);
 		$menu = $db->loadAssocList();
-		// TODO when menu is empty, there are errors displayed since path and label are never set
+		// TODO check if menu is actually needed, as in testing it only works with search engine friendly URLs
 		foreach($menu as &$m) { // prepare menu item URLs (item id)
 			$start = strpos($m['link'], '&id=') + 4;
 			if(strpos($m['link'], '&', $start) === FALSE)
@@ -102,6 +102,14 @@ class ModCategoryTagSearch
 		$query->order('c.title ASC');
 		$db->setQuery($query);
 		$articles = $db->loadAssocList();
+		$article_ids = ModCategoryTagSearch::get_db_item_ids($articles);
+		/* get tags of this article */
+		$query = $db->getQuery(true)->select('t.id AS tid, ctm.content_item_id AS aid')->from($db->quoteName('#__tags', 't'));
+		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('t.id') . '=' .  $db->quoteName('ctm.tag_id'));
+		$query->where('ctm.content_item_id IN (' . implode(',', $article_ids) . ')');
+		$query->order('t.title ASC');
+		$db->setQuery($query);
+		$articletags = $db->loadAssocList();
 		foreach($articles as &$a) { // build article data for display
 			$a['images'] = json_decode($a['images'], true)['image_intro'];
 			foreach($menu as $m) { // map menu to article if available
@@ -115,17 +123,10 @@ class ModCategoryTagSearch
 				$a['path'] = Route::_('index.php?option=com_content&view=article&id=' . $a['id'] .'&catid=' . $g_cts_config['category']);
 				$a['label'] = $a['title'];
 			}
-			/* get tags of this article */
-			// TODO can be a lot of SQL calls
-			$query = $db->getQuery(true)->select('t.id')->from($db->quoteName('#__tags', 't'));
-			$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('t.id') . '=' .  $db->quoteName('ctm.tag_id'));
-			$query->where('ctm.content_item_id = ' . $a['id']);
-			$query->order('t.title ASC');
-			$db->setQuery($query);
-			$articletags = $db->loadAssocList();
-			$s['tags'] = array();
+			$a['tags'] = array();
 			foreach($articletags as $at) {
-				$a['tags'][] = $at['id'];
+				if($a['id'] == $at['aid'])
+					$a['tags'][] = $at['tid'];
 			}
 		}
 		unset($a);
@@ -133,17 +134,17 @@ class ModCategoryTagSearch
 	}
 
 	/**
-	 * static function to get the ids from the tags
+	 * static function to get the ids from database results
 	 *
 	 * @param array of tags (assoc arrays)
 	 *
 	 * @return array of tag ids
 	 */
-	private static function get_tag_ids($tag_list) {
-		$tagids = [];
-		foreach($tag_list as $t)
-			$tagids[] = $t['id'];
-		return $tagids;
+	private static function get_db_item_ids($item_list) {
+		$item_ids = [];
+		foreach($item_list as $t)
+			$item_ids[] = $t['id'];
+		return $item_ids;
 	}
 }
 
