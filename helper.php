@@ -48,12 +48,16 @@ class ModCategoryTagSearch
 	 *
 	 * @return array of stripped tags (assoc arrays)
 	 */
-	private static function strip_tag_list($g_cts_config, $tag_list) { // TODO: better handling
+	private static function strip_tag_list($g_cts_config, $tag_list) {
+		$g_cts_config['striptag'] = array_map('trim', explode(PHP_EOL, $g_cts_config['striptag']));
+		$g_cts_config['striptag'] = array_filter(array_unique($g_cts_config['striptag']));
 		foreach($tag_list as &$t) {
 			if($g_cts_config['use_tag_lang']) // if active, strip the lang tag of the user's language
 				$t['title'] = str_replace('-' . $g_cts_config['current_lang'], '', $t['title']);
-			if($g_cts_config['striptag'] != "") // only strip if something has been set to strip
-				$t['title'] = str_replace($g_cts_config['striptag'], $t['title']);
+			if(count($g_cts_config['striptag']) > 0) { // only strip if something has been set to strip
+				foreach($g_cts_config['striptag'] as $st)
+					$t['title'] = str_replace($st, '', $t['title']);
+			}
 			$t['description'] = str_replace('<p>', '', str_replace('</p>', '', $t['description']));
 		}
 		unset($t);

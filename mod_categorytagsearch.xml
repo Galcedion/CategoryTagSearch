@@ -50,8 +50,9 @@
 					description="MOD_CTS_CATEGORY_DESC"/>
 				<field
 					name="striptag"
-					type="text"
+					type="textarea"
 					label="MOD_CTS_STRIPTAG_LABEL"
+					rows="10"
 					description="MOD_CTS_STRIPTAG_DESC"/>
 				<field
 					name="search_mode"
