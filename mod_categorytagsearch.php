@@ -15,10 +15,11 @@ require_once dirname(__FILE__) . '/helper.php';
 /* types of config parameters (only these will be used) */
 $param_list_bool = [
 	'search_mode', 'module_head', 'result_thumb', 'result_title',
-	'use_article_lang', 'use_tag_lang', 'enable_fontawesome'
+	'use_article_lang', 'use_tag_lang', 'enable_fontawesome', 'sort_direction'
 ];
 $param_list_int = [
-	'category', 'show_columns', 'show_rows', 'paging', 'result_direction'
+	'category', 'show_columns', 'show_rows', 'paging',
+	'result_direction', 'sort_by'
 ];
 $param_list_str = [
 	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css'

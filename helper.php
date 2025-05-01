@@ -73,6 +73,18 @@ class ModCategoryTagSearch
 	 * @return array of articles (assoc arrays)
 	 */
 	public static function get_article_list($g_cts_config, $tags) {
+		switch($g_cts_config['sort_by']) {
+			case 1:	$sorting = 'created';
+					break;
+			case 0:
+			default:
+					$sorting = 'title';
+					break;
+		}
+		if($g_cts_config['sort_direction'])
+			$sorting .= ' ASC';
+		else
+			$sorting .= ' DESC';
 		$tagids = ModCategoryTagSearch::get_db_item_ids($tags);
 		/* get related menu structure */
 		$db = Factory::getDbo();
@@ -103,7 +115,7 @@ class ModCategoryTagSearch
 			$query->where('c.language = ' . $db->quote($g_cts_config['current_lang']));
 		$query->where('ctm.tag_id IN (' . implode(',', $tagids) . ')');
 		$query->group('c.id');
-		$query->order('c.title ASC');
+		$query->order('c.' . $sorting);
 		$db->setQuery($query);
 		$articles = $db->loadAssocList();
 		$article_ids = ModCategoryTagSearch::get_db_item_ids($articles);

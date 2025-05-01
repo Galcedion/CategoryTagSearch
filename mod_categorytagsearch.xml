@@ -95,6 +95,25 @@
 					<option value="100">100</option>
 				</field>
 				<field
+					name="sort_by"
+					type="list"
+					default="0"
+					label="MOD_CTS_SORT_BY_LABEL"
+					description="MOD_CTS_SORT_BY_DESC">
+					<option value="0">MOD_CTS_SORT_BY_OPTION_0</option>
+					<option value="1">MOD_CTS_SORT_BY_OPTION_1</option>
+				</field>
+				<field
+					name="sort_direction"
+					type="radio"
+					default="1"
+					label="MOD_CTS_SORT_DIRECTION_LABEL"
+					description=""
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">MOD_CTS_SORT_DIRECTION_DESCENDING</option>
+					<option value="1">MOD_CTS_SORT_DIRECTION_ASCENDING</option>
+				</field>
+				<field
 					name="use_article_lang"
 					type="radio"
 					default="0"
