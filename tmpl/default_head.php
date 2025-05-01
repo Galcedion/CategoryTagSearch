@@ -13,7 +13,7 @@ $filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-m
 ?>
 <?php if($g_cts_config['module_head']): ?>
 	<h3><?=$g_cts_config['pageheader'];?></h3>
-	<?php if(strlen($g_cts_config['pageinfo']) >= 1): ?>
+	<?php if(!empty($g_cts_config['pageinfo'])): ?>
 		<p><?=$g_cts_config['pageinfo'];?></p>
 	<?php endif; ?>
 <?php endif; ?>

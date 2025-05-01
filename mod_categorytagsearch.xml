@@ -143,9 +143,10 @@
 					description="MOD_CTS_PAGEHEADER_DESC"/>
 				<field
 					name="pageinfo"
-					type="text"
+					type="editor"
 					label="MOD_CTS_PAGEINFO_LABEL"
-					description="MOD_CTS_PAGEINFO_DESC"/>
+					description="MOD_CTS_PAGEINFO_DESC"
+					filter="safehtml"/>
 				<field
 					name="result_thumb"
 					type="radio"
