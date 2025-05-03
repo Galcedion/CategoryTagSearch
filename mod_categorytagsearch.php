@@ -50,6 +50,18 @@ if($g_cts_config['search_mode']) { // get data from HTTP GET
 	$g_cts_config['GET']['p'] = filter_var($get_contents->getVar('p'), FILTER_SANITIZE_NUMBER_INT);
 	if(empty($g_cts_config['GET']['p']))
 		$g_cts_config['GET']['p'] = 1;
+	// add parameters set by Joomla when search engine friendly URLs are disabled
+	$g_cts_config['GET']['joomla'] = [];
+	$j_GET_string = ['option', 'view', 'layout', 'format', 'type'];
+	$j_GET_int = ['id', 'Itemid', 'catid'];
+	foreach($j_GET_string as $jgs) {
+		if(!empty($get_contents->getVar($jgs)))
+			$g_cts_config['GET']['joomla'][$jgs] = filter_var($get_contents->getVar($jgs), FILTER_SANITIZE_URL);
+	}
+	foreach($j_GET_int as $jgi) {
+		if(!empty($get_contents->getVar($jgi)))
+			$g_cts_config['GET']['joomla'][$jgi] = filter_var($get_contents->getVar($jgi), FILTER_SANITIZE_NUMBER_INT);
+	}
 }
 $g_cts_config['current_lang'] = Factory::getLanguage()->getTag(); // the language the user is currently using
 /* config ready */

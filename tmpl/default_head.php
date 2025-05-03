@@ -20,6 +20,9 @@ $filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-m
 <div class="g-tagsearch-headline mb-1"><?=$filter_display;?>
 <?php if($g_cts_config['search_mode']): ?>
 	<form method="GET">
+		<?php foreach($g_cts_config['GET']['joomla'] as $k => $v): ?>
+			<input type="hidden" name="<?=$k;?>" value="<?=$v;?>">
+		<?php endforeach; ?>
 		<?php foreach($tag_list as $t): ?>
 			<?php $existing_pos = array_search($t['id'], $g_cts_config['GET']['tags']); ?>
 			<?php if($existing_pos !== FALSE): ?>

@@ -30,6 +30,9 @@ if($g_cts_config['search_mode']) { // static mode
 <div id="g-cts-paging" class="text-center">
 	<?php if($g_cts_config['search_mode']): ?>
 		<form method="GET">
+			<?php foreach($g_cts_config['GET']['joomla'] as $k => $v): ?>
+				<input type="hidden" name="<?=$k;?>" value="<?=$v;?>">
+			<?php endforeach; ?>
 			<input type="hidden" name="tags" value="<?=implode(',', $g_cts_config['GET']['tags']);?>">
 	<?php endif; ?>
 	<?=$prev_display;?>
