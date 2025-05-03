@@ -86,26 +86,8 @@ class ModCategoryTagSearch
 		else
 			$sorting .= ' DESC';
 		$tagids = ModCategoryTagSearch::get_db_item_ids($tags);
-		/* get related menu structure */
-		$db = Factory::getDbo();
-		$query = $db->getQuery(true)->select('m.title, m.path, m.link')->from($db->quoteName('#__menu', 'm'));
-		$query->where('m.published = 1');
-		$query->where('m.link LIKE "%view=article%"');
-		if($g_cts_config['use_article_lang']) // if active, only get menu items from the user's language
-			$query->where('m.language = ' . $db->quote($g_cts_config['current_lang']));
-		$query->order('m.id ASC');
-		$db->setQuery($query);
-		$menu = $db->loadAssocList();
-		// TODO check if menu is actually needed, as in testing it only works with search engine friendly URLs
-		foreach($menu as &$m) { // prepare menu item URLs (item id)
-			$start = strpos($m['link'], '&id=') + 4;
-			if(strpos($m['link'], '&', $start) === FALSE)
-				$m['id'] = substr($m['link'], $start);
-			else
-				$m['id'] = substr($m['link'], $start, strpos($m['link'], '&', $start) - $start);
-		}
-		unset($m);
 		/* get required articles */
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true)->select('c.id, c.title, c.images')->from($db->quoteName('#__content', 'c'));
 		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('c.id') . '=' .  $db->quoteName('ctm.content_item_id'));
 		$query->join('LEFT', $db->quoteName('#__categories', 'cat') . ' ON ' . $db->quoteName('c.catid') . '=' .  $db->quoteName('cat.id'));
@@ -130,14 +112,7 @@ class ModCategoryTagSearch
 		$articletags = $db->loadAssocList();
 		foreach($articles as &$a) { // build article data for display
 			$a['images'] = json_decode($a['images'], true)['image_intro'];
-			foreach($menu as $m) { // map menu to article if available
-				if($a['id'] == $m['id']) {
-					$a['path'] = $m['path'];
-					$a['label'] = $m['title'];
-					break;
-				}
-			}
-			if(!isset($a['path'])) { // build alternative URL and title when no menu available
+			if(!isset($a['path'])) { // build URL and title
 				$a['path'] = Route::_('index.php?option=com_content&view=article&id=' . $a['id'] .'&catid=' . $g_cts_config['category']);
 				$a['label'] = $a['title'];
 			}
