@@ -105,21 +105,23 @@ class ModCategoryTagSearch
 		$query = $db->getQuery(true)->select('t.id AS tid, ctm.content_item_id AS aid')->from($db->quoteName('#__tags', 't'));
 		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('t.id') . '=' .  $db->quoteName('ctm.tag_id'));
 		$query->where('ctm.content_item_id IN (' . implode(',', $article_ids) . ')');
-		if(!empty($g_cts_config['GET']['tags']))
-			$query->where('t.id IN (' . implode(',', $g_cts_config['GET']['tags']) . ')');
 		$query->order('t.title ASC');
 		$db->setQuery($query);
 		$articletags = $db->loadAssocList();
-		foreach($articles as &$a) { // build article data for display
+		foreach($articles as $k => &$a) { // build article data for display
 			$a['images'] = json_decode($a['images'], true)['image_intro'];
 			if(!isset($a['path'])) { // build URL and title
 				$a['path'] = Route::_('index.php?option=com_content&view=article&id=' . $a['id'] .'&catid=' . $g_cts_config['category']);
 				$a['label'] = $a['title'];
 			}
 			$a['tags'] = array();
-			foreach($articletags as $at) {
+			foreach($articletags as $at) { // add tags to article
 				if($a['id'] == $at['aid'])
 					$a['tags'][] = $at['tid'];
+			}
+			if(!empty($g_cts_config['GET']['tags'])) { // if tags are given and not matching, remove result
+				if(array_intersect($g_cts_config['GET']['tags'], $a['tags']) != $g_cts_config['GET']['tags'])
+					unset($articles[$k]);
 			}
 		}
 		unset($a);
