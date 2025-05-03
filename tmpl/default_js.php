@@ -58,7 +58,7 @@ function gCTSSwitchtag(origin) {
 		maxPage = Math.ceil(onpageCount / gRPP);
 	}
 	gCTSAddResult(null, currentRow);
-	<?php if($enable_paging): ?>
+	<?php if($g_cts_config['enable_paging']): ?>
 	if(onpageCount > gRPP)
 		document.getElementById('g-cts-paging').classList.remove('hidden');
 	else
@@ -88,7 +88,7 @@ function gCTSFlipPaging(step) {
 		if(hasTag && Math.ceil(onpageCount / gRPP) == curPage)
 			currentRow = gCTSAddResult(id, currentRow);
 	}
-	<?php if($enable_paging): ?>
+	<?php if($g_cts_config['enable_paging']): ?>
 	gCTSSetPaging();
 	<?php endif; ?>
 }
@@ -121,7 +121,7 @@ function gCTSAddResult(resultId, currentRow = null) {
 	}
 	return currentRow;
 }
-<?php if($enable_paging): ?>
+<?php if($g_cts_config['enable_paging']): ?>
 function gCTSSetPaging() {
 	document.getElementById('g-cts-paging-cur').textContent = curPage;
 	document.getElementById('g-cts-paging-total').textContent = maxPage;

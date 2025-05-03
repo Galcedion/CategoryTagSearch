@@ -10,9 +10,9 @@
 defined('_JEXEC') or die;
 /* set HTML params from config and initial */
 if($g_cts_config['search_mode'])
-	$article_classes = 'mb-1 g-cts-article-base ' . $bootstrap_col;
-else
 	$article_classes = 'mb-1 g-cts-article ' . $bootstrap_col . ($onpage_count > $g_cts_config['rpp'] ? ' hidden' : '');
+else
+	$article_classes = 'mb-1 g-cts-article-base ' . $bootstrap_col;
 if($g_cts_config['result_direction'] == 0)
 	$tag_classes = 'bg-info text-white rounded px-1 small w-auto mx-1';
 else

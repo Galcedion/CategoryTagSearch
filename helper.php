@@ -123,6 +123,8 @@ class ModCategoryTagSearch
 		$query = $db->getQuery(true)->select('t.id AS tid, ctm.content_item_id AS aid')->from($db->quoteName('#__tags', 't'));
 		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('t.id') . '=' .  $db->quoteName('ctm.tag_id'));
 		$query->where('ctm.content_item_id IN (' . implode(',', $article_ids) . ')');
+		if(!empty($g_cts_config['GET']['tags']))
+			$query->where('t.id IN (' . implode(',', $g_cts_config['GET']['tags']) . ')');
 		$query->order('t.title ASC');
 		$db->setQuery($query);
 		$articletags = $db->loadAssocList();
@@ -161,6 +163,21 @@ class ModCategoryTagSearch
 		foreach($item_list as $t)
 			$item_ids[] = $t['id'];
 		return $item_ids;
+	}
+
+	/**
+	 * static function to get one single page of articles (intended for PHP Paging)
+	 *
+	 * @param array of articles (assoc arrays)
+	 * @param associative array containing the module config
+	 *
+	 * @return array of articles (assoc arrays)
+	 */
+	public static function get_article_list_page($article_list, $g_cts_config) {
+		$range_start = $g_cts_config['rpp'] * ($g_cts_config['GET']['p'] - 1);
+		$range_end = $g_cts_config['rpp'] * ($g_cts_config['GET']['p']);
+		$article_list = array_slice($article_list, $range_start, $range_end);
+		return $article_list;
 	}
 }
 
