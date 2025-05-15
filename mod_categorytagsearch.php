@@ -64,6 +64,12 @@ if($g_cts_config['search_mode']) { // get data from HTTP GET
 	}
 }
 $g_cts_config['current_lang'] = Factory::getLanguage()->getTag(); // the language the user is currently using
+foreach($params->get('pagealt') as $pagealt) { // setting up alternative language
+	if($pagealt->pagealt_lang == $g_cts_config['current_lang']) {
+		$g_cts_config['pageheader'] = $pagealt->pagealt_header;
+		$g_cts_config['pageinfo'] = $pagealt->pagealt_info;
+	}
+}
 /* config ready */
 
 $tag_list = ModCategoryTagSearch::get_tag_list($g_cts_config);

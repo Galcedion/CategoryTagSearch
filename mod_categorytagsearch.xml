@@ -167,6 +167,28 @@
 					description="MOD_CTS_PAGEINFO_DESC"
 					filter="safehtml"/>
 				<field
+					name="pagealt"
+					type="subform"
+					label="MOD_CTS_PAGEALT_LABEL"
+					multiple="true">
+					<form>
+						<field
+							name="pagealt_lang"
+							type="contentlanguage"
+							label="MOD_CTS_PAGEALT_LANG_LABEL"
+							description="MOD_CTS_PAGEALT_LANG_DESC"/>
+						<field
+							name="pagealt_header"
+							type="text"
+							label="MOD_CTS_PAGEHEADER_LABEL"/>
+						<field
+							name="pagealt_info"
+							type="editor"
+							label="MOD_CTS_PAGEINFO_LABEL"
+							filter="safehtml"/>
+					</form>
+				</field>
+				<field
 					name="result_thumb"
 					type="radio"
 					default="0"
