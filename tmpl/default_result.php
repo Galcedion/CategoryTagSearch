@@ -13,10 +13,14 @@ if($g_cts_config['search_mode'])
 	$article_classes = 'mb-1 g-cts-article ' . $bootstrap_col . ($onpage_count > $g_cts_config['rpp'] ? ' hidden' : '');
 else
 	$article_classes = 'mb-1 g-cts-article-base ' . $bootstrap_col;
+$tag_classes = 'rounded px-1 small text-white m-1';
+if(in_array($g_cts_config['color_tag'], $bootstrap_colors))
+	$tag_classes .= ' bg-' . $g_cts_config['color_tag'];
 if($g_cts_config['result_direction'] == 0)
-	$tag_classes = 'bg-info text-white rounded px-1 small w-auto mx-1';
-else
-	$tag_classes = 'bg-info text-white rounded px-1 small';
+	$tag_classes .= ' w-auto';
+$tag_style = '';
+if($g_cts_config['tag_transparency'])
+	$tag_style = ' style="opacity:0.7"';
 ?>
 <div id="g-cts-article-<?=$a['id'];?>" class="<?=$article_classes;?>">
 	<div class="container">
@@ -40,7 +44,7 @@ else
 		<div class="<?=$g_cts_config['result_direction'] == 0 ? 'row justify-content-center' : 'col';?>">
 			<?php foreach($tag_list as $t): ?>
 				<?php if(in_array($t['id'], $a['tags'])): ?>
-					<strong class="<?=$tag_classes;?> g-cts-tag-<?=$t['id'];?>" title="<?=$t['description'];?>"><?=$t['title'];?></strong>
+					<strong class="<?=$tag_classes;?> g-cts-tag-<?=$t['id'];?>" title="<?=$t['description'];?>"<?=$tag_style;?>><?=$t['title'];?></strong>
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</div>

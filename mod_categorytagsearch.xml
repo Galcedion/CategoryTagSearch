@@ -229,6 +229,46 @@
 					<option value="1">JYes</option>
 				</field>
 				<field
+					name="color_button"
+					type="list"
+					default="info"
+					label="MOD_CTS_COLOR_BUTTON_LABEL">
+					<option value="info">MOD_CTS_COLOR_OPTION_INFO</option>
+					<option value="success">MOD_CTS_COLOR_OPTION_SUCCESS</option>
+					<option value="warning">MOD_CTS_COLOR_OPTION_WARNING</option>
+					<option value="danger">MOD_CTS_COLOR_OPTION_DANGER</option>
+					<option value="primary">MOD_CTS_COLOR_OPTION_PRIMARY</option>
+					<option value="secondary">MOD_CTS_COLOR_OPTION_SECONDARY</option>
+					<option value="light">MOD_CTS_COLOR_OPTION_LIGHT</option>
+					<option value="dark">MOD_CTS_COLOR_OPTION_DARK</option>
+					<option value="none">MOD_CTS_COLOR_OPTION_NONE</option>
+				</field>
+				<field
+					name="color_tag"
+					type="list"
+					default="info"
+					label="MOD_CTS_COLOR_TAG_LABEL">
+					<option value="info">MOD_CTS_COLOR_OPTION_INFO</option>
+					<option value="success">MOD_CTS_COLOR_OPTION_SUCCESS</option>
+					<option value="warning">MOD_CTS_COLOR_OPTION_WARNING</option>
+					<option value="danger">MOD_CTS_COLOR_OPTION_DANGER</option>
+					<option value="primary">MOD_CTS_COLOR_OPTION_PRIMARY</option>
+					<option value="secondary">MOD_CTS_COLOR_OPTION_SECONDARY</option>
+					<option value="light">MOD_CTS_COLOR_OPTION_LIGHT</option>
+					<option value="dark">MOD_CTS_COLOR_OPTION_DARK</option>
+					<option value="none">MOD_CTS_COLOR_OPTION_NONE</option>
+				</field>
+				<field
+					name="tag_transparency"
+					type="radio"
+					default="0"
+					label="MOD_CTS_TAG_TRANSPARENCY_LABEL"
+					description="MOD_CTS_TAG_TRANSPARENCY_DESC"
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
 					name="custom_css"
 					type="textarea"
 					label="MOD_CTS_CUSTOM_CSS_LABEL"

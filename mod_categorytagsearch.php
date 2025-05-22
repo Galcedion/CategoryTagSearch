@@ -16,13 +16,14 @@ require_once dirname(__FILE__) . '/helper.php';
 /* types of config parameters (only these will be used) */
 $param_list_bool = [
 	'search_mode', 'module_head', 'result_thumb', 'result_title', 'result_newtab',
-	'use_article_lang', 'use_tag_lang', 'enable_fontawesome', 'sort_direction'
+	'use_article_lang', 'use_tag_lang', 'enable_fontawesome', 'sort_direction', 'tag_transparency'
 ];
 $param_list_int = [
 	'category', 'show_columns', 'show_rows', 'result_direction', 'sort_by'
 ];
 $param_list_str = [
-	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css'
+	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css',
+	'color_button', 'color_tag'
 ];
 /* building main config */
 $g_cts_config = [];

@@ -10,6 +10,10 @@
 defined('_JEXEC') or die;
 use Joomla\CMS\Helper\ModuleHelper;
 /* set HTML params from config and initial */
+$bootstrap_colors = [
+	'info', 'success', 'warning', 'danger',
+	'primary', 'secondary', 'light', 'dark'
+];
 $col_step = 12 / intval($g_cts_config['show_columns']);
 $col_val = 0;
 $row_open = FALSE;

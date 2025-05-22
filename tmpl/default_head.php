@@ -10,6 +10,9 @@
 defined('_JEXEC') or die;
 /* set HTML params from config and initial */
 $filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-magnifying-glass"></i>' : '';
+$btn_class = 'btn btn-sm';
+if(in_array($g_cts_config['color_button'], $bootstrap_colors))
+	$btn_class .= ' btn-' . $g_cts_config['color_button'];
 ?>
 <?php if($g_cts_config['module_head']): ?>
 	<h3><?=$g_cts_config['pageheader'];?></h3>
@@ -30,12 +33,12 @@ $filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-m
 			<?php else: ?>
 				<?php $selected_tags = array_merge($g_cts_config['GET']['tags'], [$t['id']]); ?>
 			<?php endif; ?>
-			<button type="submit" id="g-cts-tag-<?=$t['id'];?>" name="tags" value="<?=implode(',', $selected_tags);?>" class="btn btn-sm btn-info" title="<?=$t['description'];?>"><?=$t['title'];?></button>
+			<button type="submit" id="g-cts-tag-<?=$t['id'];?>" name="tags" value="<?=implode(',', $selected_tags);?>" class="<?=$btn_class;?>" title="<?=$t['description'];?>"><?=$t['title'];?></button>
 		<?php endforeach; ?>
 	</form>
 <?php else: ?>
 	<?php foreach($tag_list as $t): ?>
-		<strong id="g-cts-tag-<?=$t['id'];?>" class="btn btn-sm btn-info" title="<?=$t['description'];?>" onclick="gCTSSwitchtag(this.id)"><?=$t['title'];?></strong>
+		<strong id="g-cts-tag-<?=$t['id'];?>" class="<?=$btn_class;?>" title="<?=$t['description'];?>" onclick="gCTSSwitchtag(this.id)"><?=$t['title'];?></strong>
 	<?php endforeach; ?>
 <?php endif; ?>
 </div>
