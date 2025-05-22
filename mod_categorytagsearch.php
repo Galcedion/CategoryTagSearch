@@ -19,8 +19,7 @@ $param_list_bool = [
 	'use_article_lang', 'use_tag_lang', 'enable_fontawesome', 'sort_direction'
 ];
 $param_list_int = [
-	'category', 'show_columns', 'show_rows', 'paging',
-	'result_direction', 'sort_by'
+	'category', 'show_columns', 'show_rows', 'result_direction', 'sort_by'
 ];
 $param_list_str = [
 	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css'

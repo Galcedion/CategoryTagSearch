@@ -86,18 +86,6 @@
 					max="50"
 					step="5"/>
 				<field
-					name="paging"
-					type="list"
-					default="0"
-					label="MOD_CTS_PAGING_LABEL"
-					description="MOD_CTS_PAGING_DESC">
-					<option value="0">MOD_CTS_PAGING_OPTION_0</option>
-					<option value="10">10</option>
-					<option value="20">20</option>
-					<option value="50">50</option>
-					<option value="100">100</option>
-				</field>
-				<field
 					name="sort_by"
 					type="list"
 					default="0"
