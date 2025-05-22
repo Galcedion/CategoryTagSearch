@@ -27,7 +27,7 @@ if($g_cts_config['tag_transparency'])
 		<?php if($g_cts_config['result_direction'] == 1): ?>
 			<div class="row">
 		<?php endif; ?>
-		<?php if($g_cts_config['result_thumb']): ?>
+		<?php if($g_cts_config['result_thumb'] && !empty($a['images'])): ?>
 			<div class="<?=$g_cts_config['result_direction'] == 0 ? 'row text-center' : 'col';?>">
 				<a href="<?=$a['path'];?>"<?=$g_cts_config['result_newtab'] ? ' target="_blank"' : '';?>>
 					<img src="<?=$a['images'];?>"/>

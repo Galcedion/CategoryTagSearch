@@ -30,6 +30,7 @@ function gCTSInit() {
 			currentRow = gCTSAddResult(id, currentRow);
 		maxPage = Math.ceil(onpageCount / gRPP);
 	}
+	gCTSAddResult(null, currentRow);
 }
 function gCTSSwitchtag(origin) {
 	curPage = 1;

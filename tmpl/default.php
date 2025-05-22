@@ -17,7 +17,7 @@ $bootstrap_colors = [
 $col_step = 12 / intval($g_cts_config['show_columns']);
 $col_val = 0;
 $row_open = FALSE;
-$bootstrap_col = 'col-' . $col_step;
+$bootstrap_col = 'col-' . floor($col_step);
 if($g_cts_config['search_mode'])
 	$onpage_count = 0;
 else
