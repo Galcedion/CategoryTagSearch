@@ -9,7 +9,7 @@
  */
 defined('_JEXEC') or die;
 /* set HTML params from config and initial */
-$filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-magnifying-glass"></i>' : '';
+$filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-magnifying-glass my-auto me-1"></i>' : '';
 $btn_class = 'btn btn-sm';
 if(in_array($g_cts_config['color_button'], $bootstrap_colors))
 	$btn_class .= ' btn-' . $g_cts_config['color_button'];
@@ -20,7 +20,7 @@ if(in_array($g_cts_config['color_button'], $bootstrap_colors))
 		<p><?=$g_cts_config['pageinfo'];?></p>
 	<?php endif; ?>
 <?php endif; ?>
-<div class="g-tagsearch-headline mb-1"><?=$filter_display;?>
+<div class="g-tagsearch-headline mb-2 d-inline-flex"><?=$filter_display;?>
 <?php if($g_cts_config['search_mode']): ?>
 	<form method="GET">
 		<?php foreach($g_cts_config['GET']['joomla'] as $k => $v): ?>
@@ -33,7 +33,7 @@ if(in_array($g_cts_config['color_button'], $bootstrap_colors))
 			<?php else: ?>
 				<?php $selected_tags = array_merge($g_cts_config['GET']['tags'], [$t['id']]); ?>
 			<?php endif; ?>
-			<button type="submit" id="g-cts-tag-<?=$t['id'];?>" name="tags" value="<?=implode(',', $selected_tags);?>" class="<?=$btn_class;?>" title="<?=$t['description'];?>"><?=$t['title'];?></button>
+			<button type="submit" id="g-cts-tag-<?=$t['id'];?>" name="tags" value="<?=implode(',', $selected_tags);?>" class="<?=$btn_class;?><?=in_array($t['id'],$g_cts_config['GET']['tags'])?' active':'';?>" title="<?=$t['description'];?>"><?=$t['title'];?></button>
 		<?php endforeach; ?>
 	</form>
 <?php else: ?>
