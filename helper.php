@@ -92,7 +92,6 @@ class ModCategoryTagSearch
 		$db = Factory::getDbo();
 		$query = $db->getQuery(true)->select('c.id, c.title, c.images')->from($db->quoteName('#__content', 'c'));
 		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('c.id') . '=' .  $db->quoteName('ctm.content_item_id'));
-		$query->join('LEFT', $db->quoteName('#__categories', 'cat') . ' ON ' . $db->quoteName('c.catid') . '=' .  $db->quoteName('cat.id'));
 		$query->where('c.catid = ' . $db->quote($g_cts_config['category']));
 		$query->where('c.state = 1');
 		if($g_cts_config['use_article_lang']) // if active, only get articles from the user's language

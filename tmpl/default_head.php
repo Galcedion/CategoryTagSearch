@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 /* set HTML params from config and initial */
 $filter_display = $g_cts_config['enable_fontawesome'] ? '<i class="fa-solid fa-magnifying-glass my-auto me-1"></i>' : '';
-$btn_class = 'btn btn-sm';
+$btn_class = 'btn btn-sm mx-1';
 if(in_array($g_cts_config['color_button'], $bootstrap_colors))
 	$btn_class .= ' btn-' . $g_cts_config['color_button'];
 ?>

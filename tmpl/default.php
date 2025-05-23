@@ -29,7 +29,7 @@ else
 	$onpage_count = count($article_list);
 ?>
 <?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_head'); ?>
-	<?php if($g_cts_config['search_mode']): ?>
+<?php if($g_cts_config['search_mode']): ?>
 	<div class="container">
 	<?php foreach($article_list as $a): ?>
 		<?php $onpage_count++; ?>
