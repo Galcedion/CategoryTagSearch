@@ -8,8 +8,13 @@
  * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
  */
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
 /* set HTML params from config and initial */
+if(strlen($g_cts_config['custom_css']) > 0) { // load custom CSS if set
+	$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+	$wa->addInlineStyle($g_cts_config['custom_css']);
+}
 $bootstrap_colors = [
 	'info', 'success', 'warning', 'danger',
 	'primary', 'secondary', 'light', 'dark'
