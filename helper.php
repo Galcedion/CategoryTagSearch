@@ -33,6 +33,8 @@ class ModCategoryTagSearch
 		$query->where('c.state = 1');
 		if($g_cts_config['use_tag_lang']) // if active, only get tags from the user's language
 			$query->where('t.language = ' . $db->quote($g_cts_config['current_lang']));
+		if($g_cts_config['use_article_lang']) // if active, only get articles from the user's language
+			$query->where('c.language = ' . $db->quote($g_cts_config['current_lang']));
 		$query->group('t.id');
 		$query->order('t.title ASC');
 		$db->setQuery($query);
