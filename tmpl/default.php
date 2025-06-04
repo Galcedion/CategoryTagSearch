@@ -51,7 +51,7 @@ else
 		</div>
 	<?php else: ?>
 		<div id="g-cts-list" class="container"></div>
-		<div class="hidden">
+		<div class="d-none">
 		<?php foreach($article_list as $a): ?>
 				<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_result'); ?>
 		<?php endforeach; ?>
