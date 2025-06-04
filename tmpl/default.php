@@ -28,37 +28,39 @@ if($g_cts_config['search_mode'])
 else
 	$onpage_count = count($article_list);
 ?>
-<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_head'); ?>
-<?php if($g_cts_config['search_mode']): ?>
-	<div class="container">
-	<?php foreach($article_list as $a): ?>
-		<?php $onpage_count++; ?>
-		<?php if($col_val == 0): ?>
-			<div class="row">
-		<?php $row_open = TRUE; endif; ?>
-		<?php if(!empty($a['tags'])): ?>
-			<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_result'); ?>
-		<?php endif; ?>
-		<?php $col_val += $col_step; ?>
-		<?php if($col_val >= 12): ?>
+<div class="<?=$g_cts_config['g_class'];?>">
+	<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_head'); ?>
+	<?php if($g_cts_config['search_mode']): ?>
+		<div class="container">
+		<?php foreach($article_list as $a): ?>
+			<?php $onpage_count++; ?>
+			<?php if($col_val == 0): ?>
+				<div class="row">
+			<?php $row_open = TRUE; endif; ?>
+			<?php if(!empty($a['tags'])): ?>
+				<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_result'); ?>
+			<?php endif; ?>
+			<?php $col_val += $col_step; ?>
+			<?php if($col_val >= 12): ?>
+				</div>
+			<?php $col_val = 0; $row_open = FALSE; endif; ?>
+		<?php endforeach; ?>
+		<?php if($row_open): ?>
 			</div>
-		<?php $col_val = 0; $row_open = FALSE; endif; ?>
-	<?php endforeach; ?>
-	<?php if($row_open): ?>
+		<?php endif; ?>
+		</div>
+	<?php else: ?>
+		<div id="g-cts-list" class="container"></div>
+		<div class="hidden">
+		<?php foreach($article_list as $a): ?>
+				<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_result'); ?>
+		<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
-	</div>
-<?php else: ?>
-	<div id="g-cts-list" class="container"></div>
-	<div class="hidden">
-	<?php foreach($article_list as $a): ?>
-			<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_result'); ?>
-	<?php endforeach; ?>
-	</div>
-<?php endif; ?>
-<?php if($g_cts_config['enable_paging']): ?>
-	<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_paging'); ?>
-<?php endif; ?>
-<?php if(!$g_cts_config['search_mode']): ?>
-	<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_js'); ?>
-<?php endif; ?>
+	<?php if($g_cts_config['enable_paging']): ?>
+		<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_paging'); ?>
+	<?php endif; ?>
+	<?php if(!$g_cts_config['search_mode']): ?>
+		<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_js'); ?>
+	<?php endif; ?>
+</div>
