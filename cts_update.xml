@@ -1,2 +1,14 @@
 <updates>
+	<update>
+		<name>CategoryTagSearch</name>
+		<description>Version 1.0.1 of mod_categorytagsearch</description>
+		<element>mod_categorytagsearch</element>
+		<type>module</type>
+		<version>1.0.1</version>
+		<client>site</client>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Galcedion/CategoryTagSearch/archive/refs/tags/1.0.1.zip</downloadurl>
+		</downloads>
+		<targetplatform name="joomla" version=".*" />
+	</update>
 </updates>
