@@ -157,18 +157,21 @@
 					label="MOD_CTS_PAGEHEADER_LABEL"
 					default="Search by Tag"
 					required="True"
-					description="MOD_CTS_PAGEHEADER_DESC"/>
+					description="MOD_CTS_PAGEHEADER_DESC"
+					showon="module_head:1"/>
 				<field
 					name="pageinfo"
 					type="editor"
 					label="MOD_CTS_PAGEINFO_LABEL"
 					description="MOD_CTS_PAGEINFO_DESC"
-					filter="safehtml"/>
+					filter="safehtml"
+					showon="module_head:1"/>
 				<field
 					name="pagealt"
 					type="subform"
 					label="MOD_CTS_PAGEALT_LABEL"
-					multiple="true">
+					multiple="true"
+					showon="module_head:1">
 					<form>
 						<field
 							name="pagealt_lang"
