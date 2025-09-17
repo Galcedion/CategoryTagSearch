@@ -52,6 +52,13 @@
 					required="True"
 					description="MOD_CTS_CATEGORY_DESC"/>
 				<field
+					name="ignoretag"
+					type="tag"
+					label="MOD_CTS_IGNORETAG_LABEL"
+					multiple="true"
+					mode="nested"
+					description="MOD_CTS_IGNORETAG_DESC"/>
+				<field
 					name="striptag"
 					type="textarea"
 					label="MOD_CTS_STRIPTAG_LABEL"

@@ -31,6 +31,8 @@ class ModCategoryTagSearch
 		$query->where('c.catid = ' . $db->quote($g_cts_config['category']));
 		$query->where('t.published = 1');
 		$query->where('c.state = 1');
+		if($g_cts_config['ignoretag'] !== NULL)
+			$query->where('t.id NOT IN (' . implode(',', $g_cts_config['ignoretag']) . ')');
 		if($g_cts_config['use_tag_lang']) // if active, only get tags from the user's language
 			$query->where('t.language = ' . $db->quote($g_cts_config['current_lang']));
 		if($g_cts_config['use_article_lang']) // if active, only get articles from the user's language
@@ -106,6 +108,8 @@ class ModCategoryTagSearch
 		$query = $db->getQuery(true)->select('t.id AS tid, ctm.content_item_id AS aid')->from($db->quoteName('#__tags', 't'));
 		$query->join('LEFT', $db->quoteName('#__contentitem_tag_map', 'ctm') . ' ON ' . $db->quoteName('t.id') . '=' .  $db->quoteName('ctm.tag_id'));
 		$query->where('ctm.content_item_id IN (' . implode(',', $article_ids) . ')');
+		if($g_cts_config['ignoretag'] !== NULL)
+			$query->where('t.id NOT IN (' . implode(',', $g_cts_config['ignoretag']) . ')');
 		$query->order('t.title ASC');
 		$db->setQuery($query);
 		$articletags = $db->loadAssocList();

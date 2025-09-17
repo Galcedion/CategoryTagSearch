@@ -36,6 +36,7 @@ foreach($param_list_int as $pli) { // sanitize int params
 foreach($param_list_str as $pls) { // clean up str params
 	$g_cts_config[$pls] = $params->get($pls) === NULL ? '' : trim($params->get($pls));
 }
+$g_cts_config['ignoretag'] = $params->get('ignoretag');
 $g_cts_config['rpp'] = intval($g_cts_config['show_columns']) * intval($g_cts_config['show_rows']);
 $g_cts_config['enable_paging'] = NULL; // the actual value will be set in get_article_list
 if($g_cts_config['search_mode']) { // get data from HTTP GET
