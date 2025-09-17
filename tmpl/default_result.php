@@ -14,13 +14,17 @@ if($g_cts_config['search_mode'])
 else
 	$article_classes = 'mb-1 g-cts-article-base ' . $bootstrap_col;
 $tag_classes = 'rounded px-1 small text-white m-1';
-if(in_array($g_cts_config['color_tag'], $bootstrap_colors))
+if(!$g_cts_config['overwrite_colors'] && in_array($g_cts_config['color_tag'], $bootstrap_colors))
 	$tag_classes .= ' bg-' . $g_cts_config['color_tag'];
 if($g_cts_config['result_direction'] == 0)
 	$tag_classes .= ' w-auto';
 $tag_style = '';
 if($g_cts_config['tag_transparency'])
-	$tag_style = ' style="opacity:0.7"';
+	$tag_style = 'opacity:0.7;';
+if($g_cts_config['overwrite_colors'])
+	$tag_style .= ' background-color:' . $g_cts_config['overwrite_color_tag'] . ';';
+if($tag_style != '')
+	$tag_style = ' style="' . ltrim($tag_style) . '"';
 ?>
 <div id="g-cts-article-<?=$a['id'];?>" class="<?=$article_classes;?>">
 	<div class="container">
