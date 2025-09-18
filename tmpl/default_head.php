@@ -15,7 +15,7 @@ if(!$g_cts_config['overwrite_colors'] && in_array($g_cts_config['color_button'],
 	$btn_class .= ' btn-' . $g_cts_config['color_button'];
 $btn_style = '';
 if($g_cts_config['overwrite_colors'])
-	$btn_style = ' style="background-color:' . $g_cts_config['overwrite_color_button'] . '"';
+	$btn_style = ' style="background-color:' . $g_cts_config['overwrite_color_button_bg'] . '; color:' . $g_cts_config['overwrite_color_button_text'] . '"';
 ?>
 <?php if($g_cts_config['module_head']): ?>
 	<h3><?=$g_cts_config['pageheader'];?></h3>

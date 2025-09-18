@@ -24,7 +24,8 @@ $param_list_int = [
 ];
 $param_list_str = [
 	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css',
-	'color_button', 'color_tag', 'overwrite_color_button', 'overwrite_color_tag'
+	'color_button', 'color_tag',
+	'overwrite_color_button_bg', 'overwrite_color_button_text', 'overwrite_color_tag_bg', 'overwrite_color_tag_text'
 ];
 /* building main config */
 $g_cts_config = [];
