@@ -27,6 +27,14 @@ else
 	$tag_classes .= ' text-white';
 if($tag_style != '')
 	$tag_style = ' style="' . ltrim($tag_style) . '"';
+$img_style = '';
+if($g_cts_config['force_thumb_size'] && !empty($g_cts_config['thumb_size_value'])) {
+	if(is_numeric($g_cts_config['thumb_size_value']))
+		$img_stlye = $g_cts_config['thumb_size_value'] . 'px';
+	else
+		$img_stlye = str_replace(' ', '', $g_cts_config['thumb_size_value']);
+	$img_style = ' style="' . ($g_cts_config['thumb_size_xy'] ? 'height' : 'width') . ':' . $img_stlye . '"';
+}
 ?>
 <div id="g-cts-article-<?=$a['id'];?>" class="<?=$article_classes;?>">
 	<div class="container">
@@ -36,7 +44,7 @@ if($tag_style != '')
 		<?php if($g_cts_config['result_thumb'] && !empty($a['images'])): ?>
 			<div class="<?=$g_cts_config['result_direction'] == 0 ? 'row text-center' : 'col';?>">
 				<a href="<?=$a['path'];?>"<?=$g_cts_config['result_newtab'] ? ' target="_blank"' : '';?>>
-					<img src="<?=$a['images'];?>"/>
+					<img src="<?=$a['images'];?>"<?=$img_style;?>/>
 				</a>
 			</div>
 		<?php endif; ?>

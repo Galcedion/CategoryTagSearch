@@ -190,6 +190,16 @@
 					</form>
 				</field>
 				<field
+					name="result_title"
+					type="radio"
+					default="1"
+					label="MOD_CTS_RESULT_TITLE_LABEL"
+					description="MOD_CTS_RESULT_TITLE_DESC"
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
 					name="result_thumb"
 					type="radio"
 					default="0"
@@ -200,15 +210,31 @@
 					<option value="1">JYes</option>
 				</field>
 				<field
-					name="result_title"
+					name="force_thumb_size"
 					type="radio"
-					default="1"
-					label="MOD_CTS_RESULT_TITLE_LABEL"
-					description="MOD_CTS_RESULT_TITLE_DESC"
-					layout="joomla.form.field.radio.switcher">
+					default="0"
+					label="MOD_CTS_FORCE_THUMB_SIZE_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					showon="result_thumb:1">
 					<option value="0">JNo</option>
 					<option value="1">JYes</option>
 				</field>
+				<field
+					name="thumb_size_xy"
+					type="radio"
+					default="0"
+					label="MOD_CTS_THUMB_SIZE_XY_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					showon="force_thumb_size:1">
+					<option value="0">MOD_CTS_THUMB_SIZE_WIDTH_OPTION</option>
+					<option value="1">MOD_CTS_THUMB_SIZE_HEIGHT_OPTION</option>
+				</field>
+				<field
+					name="thumb_size_value"
+					type="text"
+					label="MOD_CTS_THUMB_SIZE_VALUE_LABEL"
+					description="MOD_CTS_THUMB_SIZE_VALUE_DESC"
+					showon="force_thumb_size:1"/>
 				<field
 					name="result_direction"
 					type="list"
