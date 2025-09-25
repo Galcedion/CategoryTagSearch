@@ -28,12 +28,23 @@ else
 if($tag_style != '')
 	$tag_style = ' style="' . ltrim($tag_style) . '"';
 $img_style = '';
-if($g_cts_config['force_thumb_size'] && !empty($g_cts_config['thumb_size_value'])) {
-	if(is_numeric($g_cts_config['thumb_size_value']))
-		$img_stlye = $g_cts_config['thumb_size_value'] . 'px';
-	else
-		$img_stlye = str_replace(' ', '', $g_cts_config['thumb_size_value']);
-	$img_style = ' style="' . ($g_cts_config['thumb_size_xy'] ? 'height' : 'width') . ':' . $img_stlye . '"';
+if($g_cts_config['force_thumb_size']) {
+	if(in_array($g_cts_config['thumb_size_xy'], ['w', 'wh']) && !empty($g_cts_config['thumb_size_x_value'])) {
+		if(is_numeric($g_cts_config['thumb_size_x_value']))
+			$img_style_x = $g_cts_config['thumb_size_x_value'] . 'px';
+		else
+			$img_style_x = str_replace(' ', '', $g_cts_config['thumb_size_x_value']);
+		$img_style .= 'width:' . $img_style_x . ';';
+	}
+	if(in_array($g_cts_config['thumb_size_xy'], ['h', 'wh']) && !empty($g_cts_config['thumb_size_y_value'])) {
+		if(is_numeric($g_cts_config['thumb_size_y_value']))
+			$img_style_y = $g_cts_config['thumb_size_y_value'] . 'px';
+		else
+			$img_style_y = str_replace(' ', '', $g_cts_config['thumb_size_y_value']);
+		$img_style .= 'height:' . $img_style_y . ';';
+	}
+	if(!empty($img_style))
+		$img_style = ' style="' .  $img_style . '"';
 }
 $article_classes .= ' ' . $result_class;
 ?>

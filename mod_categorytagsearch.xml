@@ -221,18 +221,24 @@
 				</field>
 				<field
 					name="thumb_size_xy"
-					type="radio"
-					default="0"
+					type="list"
+					default="w"
 					label="MOD_CTS_THUMB_SIZE_XY_LABEL"
-					layout="joomla.form.field.radio.switcher"
 					showon="force_thumb_size:1">
-					<option value="0">MOD_CTS_THUMB_SIZE_WIDTH_OPTION</option>
-					<option value="1">MOD_CTS_THUMB_SIZE_HEIGHT_OPTION</option>
+					<option value="w">MOD_CTS_THUMB_SIZE_W_OPTION</option>
+					<option value="h">MOD_CTS_THUMB_SIZE_H_OPTION</option>
+					<option value="wh">MOD_CTS_THUMB_SIZE_WH_OPTION</option>
 				</field>
 				<field
-					name="thumb_size_value"
+					name="thumb_size_x_value"
 					type="text"
-					label="MOD_CTS_THUMB_SIZE_VALUE_LABEL"
+					label="MOD_CTS_THUMB_SIZE_X_VALUE_LABEL"
+					description="MOD_CTS_THUMB_SIZE_VALUE_DESC"
+					showon="force_thumb_size:1"/>
+				<field
+					name="thumb_size_y_value"
+					type="text"
+					label="MOD_CTS_THUMB_SIZE_Y_VALUE_LABEL"
 					description="MOD_CTS_THUMB_SIZE_VALUE_DESC"
 					showon="force_thumb_size:1"/>
 				<field
