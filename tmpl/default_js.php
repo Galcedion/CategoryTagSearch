@@ -102,6 +102,11 @@ function gCTSAddResult(resultId, currentRow = null) {
 	if(curRows >= numRows || (resultId == null && currentRow == null))
 		return null;
 	if(resultId == null) {
+		for(var r = 0; r < (numCols - curCols); ++r) {
+			let filler = document.createElement('div');
+			filler.classList.add('col');
+			currentRow.appendChild(filler);
+		}
 		document.getElementById('g-cts-list').appendChild(currentRow);
 		return;
 	}

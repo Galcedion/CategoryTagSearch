@@ -46,6 +46,9 @@ else
 			<?php $col_val = 0; $row_open = FALSE; endif; ?>
 		<?php endforeach; ?>
 		<?php if($row_open): ?>
+			<?php foreach(range(1,intval((12 - $col_val) / $col_step)) as $r): ?>
+				<div class="col"></div>
+			<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
 		</div>
