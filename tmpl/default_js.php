@@ -89,6 +89,7 @@ function gCTSFlipPaging(step) {
 		if(hasTag && Math.ceil(onpageCount / gRPP) == curPage)
 			currentRow = gCTSAddResult(id, currentRow);
 	}
+	gCTSAddResult(null, currentRow);
 	<?php if($g_cts_config['enable_paging']): ?>
 	gCTSSetPaging();
 	<?php endif; ?>
