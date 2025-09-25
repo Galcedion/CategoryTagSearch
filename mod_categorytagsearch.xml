@@ -236,6 +236,50 @@
 					description="MOD_CTS_THUMB_SIZE_VALUE_DESC"
 					showon="force_thumb_size:1"/>
 				<field
+					name="result_styling"
+					type="radio"
+					default="0"
+					label="MOD_CTS_RESULT_STYLING_LABEL"
+					description="MOD_CTS_RESULT_STYLING_DESC"
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
+					name="result_styling_center"
+					type="radio"
+					default="0"
+					label="MOD_CTS_RESULT_STYLING_CENTER_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					showon="result_styling:1">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
+					name="result_styling_border"
+					type="list"
+					default="0"
+					label="MOD_CTS_RESULT_STYLING_BORDER_LABEL"
+					showon="result_styling:1">
+					<option value="0">MOD_CTS_RESULT_BORDERSTYLE_NONE</option>
+					<option value="edge">MOD_CTS_RESULT_BORDERSTYLE_EDGE</option>
+					<option value="rounded">MOD_CTS_RESULT_BORDERSTYLE_ROUNDED</option>
+				</field>
+				<field
+					name="result_style_border_color"
+					type="color"
+					default="#000000"
+					format="hex"
+					label="MOD_CTS_RESULT_STYLING_BORDER_COLOR_LABEL"
+					showon="result_styling:1"/>
+				<field
+					name="result_style_bg_color"
+					type="color"
+					default="#000000"
+					format="hex"
+					label="MOD_CTS_RESULT_STYLING_BG_COLOR_LABEL"
+					showon="result_styling:1"/>
+				<field
 					name="result_direction"
 					type="list"
 					default="0"

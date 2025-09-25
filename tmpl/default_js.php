@@ -117,6 +117,7 @@ function gCTSAddResult(resultId, currentRow = null) {
 	if(currentRow == null) {
 		currentRow = document.createElement('div');
 		currentRow.classList.add('row');
+		currentRow.classList.add('mb-1');
 	}
 	currentRow.appendChild(resultClone);
 	curCols++;

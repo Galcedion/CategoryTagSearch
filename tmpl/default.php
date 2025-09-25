@@ -27,6 +27,19 @@ if($g_cts_config['search_mode'])
 	$onpage_count = 0;
 else
 	$onpage_count = count($article_list);
+$result_class = '';
+$result_style = '';
+if($g_cts_config['result_styling']) {
+	if($g_cts_config['result_styling_border'] != 0) {
+		$result_style .= 'border-color:' . $g_cts_config['result_style_border_color'] . '!important;';
+		$result_class .= ' border' . ($g_cts_config['result_styling_border'] == 'rounded' ? ' rounded' : '');
+	}
+	if($g_cts_config['result_styling_center']) {
+		$result_class .= ' d-grid align-items-center';
+	}
+	$result_class = trim($result_class);
+	$result_style = 'style="background-color:' . $g_cts_config['result_style_bg_color'] . ';' . $result_style .'"';
+}
 ?>
 <div class="<?=$g_cts_config['g_class'];?>">
 	<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_head'); ?>
@@ -35,7 +48,7 @@ else
 		<?php foreach($article_list as $a): ?>
 			<?php $onpage_count++; ?>
 			<?php if($col_val == 0): ?>
-				<div class="row">
+				<div class="row mb-1">
 			<?php $row_open = TRUE; endif; ?>
 			<?php if(!empty($a['tags'])): ?>
 				<?php require ModuleHelper::getLayoutPath('mod_categorytagsearch', $params->get('layout', 'default') . '_result'); ?>

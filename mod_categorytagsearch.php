@@ -17,7 +17,7 @@ require_once dirname(__FILE__) . '/helper.php';
 $param_list_bool = [
 	'search_mode', 'module_head', 'result_thumb', 'result_title', 'result_newtab',
 	'use_article_lang', 'use_tag_lang', 'enable_fontawesome', 'sort_direction', 'tag_transparency',
-	'overwrite_colors', 'force_thumb_size', 'thumb_size_xy'
+	'overwrite_colors', 'force_thumb_size', 'thumb_size_xy', 'result_styling', 'result_styling_center'
 ];
 $param_list_int = [
 	'category', 'show_columns', 'show_rows', 'result_direction', 'sort_by'
@@ -25,6 +25,7 @@ $param_list_int = [
 $param_list_str = [
 	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css',
 	'color_button', 'color_tag', 'thumb_size_value',
+	'result_styling_border', 'result_style_border_color', 'result_style_bg_color',
 	'overwrite_color_button_bg', 'overwrite_color_button_text', 'overwrite_color_tag_bg', 'overwrite_color_tag_text'
 ];
 /* building main config */

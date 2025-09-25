@@ -10,9 +10,9 @@
 defined('_JEXEC') or die;
 /* set HTML params from config and initial */
 if($g_cts_config['search_mode'])
-	$article_classes = 'mb-1 g-cts-article col ' . ($onpage_count > $g_cts_config['rpp'] ? ' hidden' : '');
+	$article_classes = 'm-1 g-cts-article col ' . ($onpage_count > $g_cts_config['rpp'] ? ' hidden' : '');
 else
-	$article_classes = 'mb-1 g-cts-article-base col';
+	$article_classes = 'm-1 g-cts-article-base col';
 $tag_classes = 'rounded px-1 small m-1';
 if(!$g_cts_config['overwrite_colors'] && in_array($g_cts_config['color_tag'], $bootstrap_colors))
 	$tag_classes .= ' bg-' . $g_cts_config['color_tag'];
@@ -35,8 +35,9 @@ if($g_cts_config['force_thumb_size'] && !empty($g_cts_config['thumb_size_value']
 		$img_stlye = str_replace(' ', '', $g_cts_config['thumb_size_value']);
 	$img_style = ' style="' . ($g_cts_config['thumb_size_xy'] ? 'height' : 'width') . ':' . $img_stlye . '"';
 }
+$article_classes .= ' ' . $result_class;
 ?>
-<div id="g-cts-article-<?=$a['id'];?>" class="<?=$article_classes;?>">
+<div id="g-cts-article-<?=$a['id'];?>" class="<?=$article_classes;?>"<?=$result_style;?>>
 	<div class="container">
 		<?php if($g_cts_config['result_direction'] == 1): ?>
 			<div class="row">
