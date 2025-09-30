@@ -25,7 +25,7 @@ $param_list_int = [
 $param_list_str = [
 	'g_class', 'striptag', 'pageheader', 'pageinfo', 'custom_css',
 	'color_button', 'color_tag', 'thumb_size_xy', 'thumb_size_x_value', 'thumb_size_y_value',
-	'result_styling_border', 'result_style_border_color', 'result_style_bg_color',
+	'result_styling_border', 'result_styling_border_size', 'result_style_border_color', 'result_style_bg_color',
 	'overwrite_color_button_bg', 'overwrite_color_button_text', 'overwrite_color_tag_bg', 'overwrite_color_tag_text'
 ];
 /* building main config */

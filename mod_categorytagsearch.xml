@@ -272,17 +272,23 @@
 					<option value="rounded">MOD_CTS_RESULT_BORDERSTYLE_ROUNDED</option>
 				</field>
 				<field
+					name="result_styling_border_size"
+					type="text"
+					label="MOD_CTS_RESULT_STYLING_BORDER_SIZE_LABEL"
+					description="MOD_CTS_RESULT_STYLING_BORDER_SIZE_LABEL"
+					showon="result_styling:1"/>
+				<field
 					name="result_style_border_color"
 					type="color"
-					default="#000000"
-					format="hex"
+					default="rgba(0,0,0,1)"
+					format="rgba"
 					label="MOD_CTS_RESULT_STYLING_BORDER_COLOR_LABEL"
 					showon="result_styling:1"/>
 				<field
 					name="result_style_bg_color"
 					type="color"
-					default="#000000"
-					format="hex"
+					default="rgba(0,0,0,1)"
+					format="rgba"
 					label="MOD_CTS_RESULT_STYLING_BG_COLOR_LABEL"
 					showon="result_styling:1"/>
 				<field
@@ -356,29 +362,29 @@
 				<field
 					name="overwrite_color_button_bg"
 					type="color"
-					default="#000000"
-					format="hex"
+					default="rgba(0,0,0,1)"
+					format="rgba"
 					label="MOD_CTS_OVERWRITE_COLOR_BUTTON_BG_LABEL"
 					showon="overwrite_colors:1"/>
 				<field
 					name="overwrite_color_button_text"
 					type="color"
-					default="#FFFFFF"
-					format="hex"
+					default="rgba(0,0,0,1)"
+					format="rgba"
 					label="MOD_CTS_OVERWRITE_COLOR_BUTTON_TEXT_LABEL"
 					showon="overwrite_colors:1"/>
 				<field
 					name="overwrite_color_tag_bg"
 					type="color"
-					default="#000000"
-					format="hex"
+					default="rgba(0,0,0,1)"
+					format="rgba"
 					label="MOD_CTS_OVERWRITE_COLOR_TAG_BG_LABEL"
 					showon="overwrite_colors:1"/>
 				<field
 					name="overwrite_color_tag_text"
 					type="color"
-					default="#FFFFFF"
-					format="hex"
+					default="rgba(255,255,255,1)"
+					format="rgba"
 					label="MOD_CTS_OVERWRITE_COLOR_TAG_text_LABEL"
 					showon="overwrite_colors:1"/>
 				<field

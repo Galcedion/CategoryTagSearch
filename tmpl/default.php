@@ -33,6 +33,14 @@ if($g_cts_config['result_styling']) {
 	if($g_cts_config['result_styling_border'] != 0) {
 		$result_style .= 'border-color:' . $g_cts_config['result_style_border_color'] . '!important;';
 		$result_class .= ' border' . ($g_cts_config['result_styling_border'] == 'rounded' ? ' rounded' : '');
+		if(!empty($g_cts_config['result_styling_border_size'])) {
+			$result_style .= 'border-width:';
+			if(is_numeric($g_cts_config['result_styling_border_size']))
+				$result_style .= $g_cts_config['result_styling_border_size'] . 'px';
+			else
+				$result_style .= str_replace(' ', '', $g_cts_config['result_styling_border_size']);
+			$result_style .= '!important;';
+		}
 	}
 	if($g_cts_config['result_styling_center']) {
 		$result_class .= ' d-grid align-items-center';
