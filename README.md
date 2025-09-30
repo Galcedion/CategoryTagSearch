@@ -6,7 +6,7 @@ After installing the module, open it via the "(Home) Dashboard" and the "Module"
 - define class name for module's HTML
 - select category to search in
 - two build modes - dynamic using JS to perform search (no page reload) or static to work with HTML forms (page reload)
-- define result display
+- define result display and style
 - define module header (supporting multiple languages)
 - options for Fontawesome and Bootstrap
 - ability to add custom CSS for pages with the module
