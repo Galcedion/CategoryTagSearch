@@ -404,6 +404,8 @@
 					rows="10"
 					description="MOD_CTS_CUSTOM_CSS_DESC"/>
 			</fieldset>
+			<fieldset name="cssmap" label="MOD_CTS_CSSMAP_LABEL" description="MOD_CTS_CSSMAP_DESC">
+			</fieldset>
 		</fields>
 	</config>
 </extension>
